@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/light_green"
+    android:layout_margin="7dp"
+    app:cardCornerRadius="5dp"
+    android:elevation="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:strokeWidth="0.1dp"
+    app:strokeColor="@color/gray">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/networkIDimagePurchased"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="centerInside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/round_profile_picture"
+            app:srcCompat="@drawable/ic_airtel" />
+
+        <TextView
+            android:id="@+id/purchaseNetworkID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/satoshi_bold"
+            android:text="You topped up MTN"
+            android:textColor="@color/steel_gray"
+            app:layout_constraintBottom_toBottomOf="@id/networkIDimagePurchased"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.288"
+            app:layout_constraintStart_toEndOf="@id/networkIDimagePurchased"
+            app:layout_constraintTop_toTopOf="@id/networkIDimagePurchased"
+            app:layout_constraintVertical_bias="0.454" />
+
+        <TextView
+            android:id="@+id/purchaseAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/satoshi_light"
+            android:text="$2.22"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/purchaseNetworkID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/purchaseNetworkID" />
+
+        <TextView
+            android:id="@+id/purchaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/satoshi_light"
+            android:text="Aug 19 at 1:03 PM"
+            android:textColor="@color/steel_gray"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/networkIDimagePurchased" />
+
+        <TextView
+            android:id="@+id/phoneNumberPurchasedFor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/satoshi_medium"
+            android:text="07019487824"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/purchaseDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

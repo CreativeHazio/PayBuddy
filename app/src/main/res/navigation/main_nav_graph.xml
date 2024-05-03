@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/buyDataFragment"
+        android:name="com.timeless.paybuddy.presentation.fragment.buyData.BuyDataFragment"
+        android:label="fragment_buy_data"
+        tools:layout="@layout/fragment_buy_data" >
+        <argument
+            android:name="user"
+            app:argType="com.timeless.paybuddy.domain.model.User" />
+        <argument
+            android:name="networkID"
+            app:argType="com.timeless.paybuddy.domain.model.NetworkID" />
+    </fragment>
+    <fragment
+        android:id="@+id/fundAccountFragment"
+        android:name="com.timeless.paybuddy.presentation.fragment.fundAccount.FundAccountFragment"
+        android:label="fragment_fund_account"
+        tools:layout="@layout/fragment_fund_account" >
+        <argument
+            android:name="user"
+            app:argType="com.timeless.paybuddy.domain.model.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseHistoryFragment"
+        android:name="com.timeless.paybuddy.presentation.fragment.purchaseHistory.PurchaseHistoryFragment"
+        android:label="fragment_purchase_history"
+        tools:layout="@layout/fragment_purchase_history" >
+        <argument
+            android:name="purchaseHistory"
+            app:argType="com.timeless.paybuddy.domain.model.PurchaseHistory" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.timeless.paybuddy.presentation.fragment.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_purchaseHistoryFragment"
+            app:destination="@id/purchaseHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_buyDataFragment"
+            app:destination="@id/buyDataFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fundAccountFragment"
+            app:destination="@id/fundAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.timeless.paybuddy.presentation.fragment.userProfile.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.timeless.paybuddy.domain.model.User" />
+    </fragment>
+</navigation>

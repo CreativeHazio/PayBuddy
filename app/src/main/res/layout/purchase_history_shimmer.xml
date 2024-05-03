@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:strokeWidth="0.2dp"
+        app:strokeColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/networkIDimagePurchased"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/gray"
+                android:scaleType="centerInside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/round_profile_picture"/>
+
+            <TextView
+                android:id="@+id/purchaseNetworkID"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:fontFamily="@font/satoshi_bold"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/networkIDimagePurchased"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.288"
+                app:layout_constraintStart_toEndOf="@id/networkIDimagePurchased"
+                app:layout_constraintTop_toTopOf="@id/networkIDimagePurchased"
+                app:layout_constraintVertical_bias="0.454" />
+
+            <TextView
+                android:id="@+id/purchaseAmount"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:fontFamily="@font/satoshi_light"
+                android:textColor="@color/green"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/purchaseNetworkID"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/purchaseNetworkID" />
+
+            <TextView
+                android:id="@+id/purchaseDate"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/satoshi_light"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/networkIDimagePurchased" />
+
+            <TextView
+                android:id="@+id/phoneNumberPurchasedFor"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/satoshi_medium"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/purchaseDate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">PayBuddy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buy_data">Buy Data</string>
+    <string name="fund_account">Fund Account</string>
+    <string name="purchase_history">Purchase History</string>
+    <string name="you_topped_up">You topped up</string>
+    <string name="refer_friends_now_to_get_free_data">Refer friends now to get free data</string>
+    <string name="refer_now">Refer now</string>
+    <string name="signup_txt">Sign Up</string>
+    <string name="email_txt">Email</string>
+    <string name="fullname_txt">Full Name</string>
+    <string name="phone_number_txt">Phone Number</string>
+    <string name="password_txt">Password</string>
+    <string name="already_a_user_txt">Already a user? Login</string>
+    <string name="login_txt">Log In</string>
+    <string name="new_user_txt">Don\'t have an account? Create now</string>
+    <string name="provider_txt">Provider</string>
+    <string name="account_details">Account Details</string>
+    <string name="datahaven_account_number">LinkX Account Number</string>
+    <string name="copy_user_account_number">Copy Number</string>
+    <string name="datahaven_account_name">Account Name</string>
+    <string name="or">OR</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="datahaven_account_bank">Bank</string>
+    <string name="network_provider">Network Provider</string>
+    <string name="data_plan_txt">Plan</string>
+    <string name="amount_txt">Amount</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="transaction_id">Transaction ID</string>
+    <string name="status_txt">Status</string>
+    <string name="date_txt">Date</string>
+    <string name="share_receipt">Share Receipt</string>
+    <string name="referral_link">Referral Link</string>
+    <string name="copy_referral_link">Copy Referral Link</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="empty_input">Ensure no field is empty!!</string>
+    <string name="yes">Yes</string>
+    <string name="verify_text">A link has been sent to your email address, Ensure to verify before login</string>
+    <string name="ok">Ok</string>
+    <string name="resend">Resend</string>
+    <string name="email_verification_sent">Email verification has been sent!</string>
+    <string name="email_verification_not_sent">Error, Try again!!</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="subaccount_desc">Account created for</string>
+    <string name="error_adding_user">Error adding user, try again!!</string>
+    <string name="internet_conn_failed">Failed to login, Check your internet connection and try again!!</string>
+    <string name="email_already_exists">Email already exists, Go to login page?</string>
+    <string name="invalid_email">Email address is not valid!!</string>
+    <string name="lastname_txt">Last Name</string>
+    <string name="firstname_txt">First Name</string>
+    <string name="username_txt">Username</string>
+    <string name="incorrect_email_or_password">Incorrect email or password</string>
+    <string name="referal_code_txt">Referral code (Optional)</string>
+    <string-array name="provider_list">
+        <item>MTN</item>
+        <item>9MOBILE</item>
+        <item>AIRTEL</item>
+        <item>GLO</item>
+    </string-array>
+    <string name="user_info_saved_firebase_service">User info saved successfully</string>
+    <string name="user_email_exists_firebase_service">Email already exist!!</string>
+    <string name="network_unavailable">Network unavailable</string>
+    <string name="network_lost">Network connection lost</string>
+    <string name="network_poor">Poor internet connection</string>
+    <string name="datahaven_account_number_txt">DataHaven Account Number</string>
+    <string name="account_number_has_been_copied_txt">Account number has been copied to clipboard</string>
+    <string name="resend_email_verification">Failed to send verification. Resend?</string>
+</resources>

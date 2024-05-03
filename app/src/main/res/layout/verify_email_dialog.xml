@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    android:background="@color/steel_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/verifyTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:text="@string/verify_text"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/satoshi_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/okBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="@string/ok"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toStartOf="@id/resendVerificationBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/verifyTxt" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/resendVerificationBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/green"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="@string/resend"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/okBtn"
+        app:layout_constraintTop_toBottomOf="@id/verifyTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
