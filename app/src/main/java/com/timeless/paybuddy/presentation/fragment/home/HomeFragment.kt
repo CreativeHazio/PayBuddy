@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
         }
 
         collectLatestLifecycleFlow(viewModel.networkEventFlow) {
-            when(it) {
+            when (it) {
                 is NetworkEvent.Available -> {
                     println("Network is fire")
                 }
@@ -89,6 +89,8 @@ class HomeFragment : Fragment() {
                         Snackbar.LENGTH_INDEFINITE
                     ).show()
                 }
+
+                else -> {}
             }
         }
 
