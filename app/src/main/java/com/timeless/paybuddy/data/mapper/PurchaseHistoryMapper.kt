@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.local.mapper
+package com.timeless.paybuddy.data.mapper
 
 import androidx.paging.PagingData
 import androidx.paging.map

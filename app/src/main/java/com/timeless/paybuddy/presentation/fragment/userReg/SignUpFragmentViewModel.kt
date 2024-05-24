@@ -69,7 +69,8 @@ class SignUpFragmentViewModel @Inject constructor(
 
     private fun sendEmailVerification() {
         viewModelScope.launch {
-            _isEmailVerificationSentFlow.send(createUserUseCase.sendEmailVerification())
+            createUserUseCase.sendEmailVerification()
+            _isEmailVerificationSentFlow.send(true)
         }
     }
 

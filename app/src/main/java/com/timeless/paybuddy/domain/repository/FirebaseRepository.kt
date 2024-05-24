@@ -11,7 +11,7 @@ interface FirebaseRepository {
 
     suspend fun addUserToFirestore(user: User) : Response<String>?
 
-    suspend fun sendEmailVerification() : Boolean
+    suspend fun sendEmailVerification()
 
     suspend fun loginWithEmailAndPassword(email : String, password: String) : FirebaseUser?
 

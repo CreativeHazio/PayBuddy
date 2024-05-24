@@ -15,7 +15,9 @@ import com.google.android.material.button.MaterialButton
 import com.timeless.paybuddy.R
 import com.timeless.paybuddy.databinding.FragmentLoginBinding
 import com.timeless.paybuddy.presentation.shared.FlowCollector.collectLatestLifecycleFlow
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding : FragmentLoginBinding? = null
@@ -114,18 +116,11 @@ class LoginFragment : Fragment() {
 
         val resendVerificationBtn  = dialogView.findViewById<MaterialButton>(R.id.resendVerificationBtn)
         resendVerificationBtn.setOnClickListener {
-
-            if (viewModel.sendEmailVerification()) {
-                Toast.makeText(
-                    requireContext(), getString(R.string.email_verification_sent), Toast.LENGTH_LONG
-                ).show()
-                dialog.dismiss()
-            } else {
-                Toast.makeText(
-                    requireContext(), getString(R.string.email_verification_not_sent), Toast.LENGTH_LONG
-                ).show()
-                dialog.dismiss()
-            }
+            viewModel.sendEmailVerification()
+            Toast.makeText(
+                requireContext(), getString(R.string.email_verification_sent), Toast.LENGTH_LONG
+            ).show()
+            dialog.dismiss()
 
         }
 

@@ -22,13 +22,13 @@ class SplashScreenActivity : AppCompatActivity() {
         binding.apply {
             appNameTxt.alpha = 0f
             appNameTxt.animate().setDuration(1500).alpha(1f).withEndAction{
-                if (auth.currentUser == null) {
-                    val intent = Intent(this@SplashScreenActivity, UserRegistrationActivity::class.java)
+                if (auth.currentUser != null && auth.currentUser!!.isEmailVerified) {
+                    val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                     finish()
                 } else {
-                    val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
+                    val intent = Intent(this@SplashScreenActivity, UserRegistrationActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                     finish()

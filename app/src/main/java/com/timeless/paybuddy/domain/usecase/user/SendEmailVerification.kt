@@ -6,7 +6,7 @@ class SendEmailVerification(
     private val firebaseRepository: FirebaseRepository
 ) {
 
-    suspend operator fun invoke(): Boolean {
+    suspend operator fun invoke() {
         return firebaseRepository.sendEmailVerification()
     }
 

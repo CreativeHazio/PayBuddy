@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.timeless.paybuddy.data.mapper.UserMapper
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.repository.FirebaseRepository
 import com.timeless.paybuddy.util.Constants
@@ -45,7 +46,10 @@ class FirebaseRepositoryImpl  @Inject constructor(
                 .get()
                 .await()
 
-            return response.documents[0].toObject(User::class.java)
+            val firebaseUserDto = response.documents[0].toObject(FirebaseUserDto::class.java)
+            firebaseUserDto?.let {
+                return UserMapper.fromFirebaseUserDtoToUser(it)
+            }
         } catch (e : Exception) {
             Log.w("Error getting user from firestore", e.message.toString())
         }
@@ -88,23 +92,16 @@ class FirebaseRepositoryImpl  @Inject constructor(
         return null
     }
 
-    override suspend fun sendEmailVerification(): Boolean {
-
-        var isEmailVerificationSent = false
+    override suspend fun sendEmailVerification() {
 
         try {
-
-            currentUser?.sendEmailVerification()?.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    isEmailVerificationSent = true
-                }
-            }
-
+            currentUser!!.sendEmailVerification().await()
+            println("Verification sent")
         } catch (e : Exception) {
             Log.w("Error sending email verification", e.message.toString())
+            println("Error email verification ${e.message.toString()}")
         }
 
-        return isEmailVerificationSent
     }
 
     override suspend fun loginWithEmailAndPassword(email: String, password: String): FirebaseUser? {

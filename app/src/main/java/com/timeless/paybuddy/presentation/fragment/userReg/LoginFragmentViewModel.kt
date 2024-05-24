@@ -3,6 +3,7 @@ package com.timeless.paybuddy.presentation.fragment.userReg
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
+import com.timeless.paybuddy.domain.usecase.user.CreateUserUseCase
 import com.timeless.paybuddy.domain.usecase.wallet.CreateWalletUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -13,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginFragmentViewModel @Inject constructor(
     private val createWalletUseCase: CreateWalletUseCase,
+    private val createUserUseCase: CreateUserUseCase
 ) : ViewModel() {
 
 
@@ -75,8 +77,10 @@ class LoginFragmentViewModel @Inject constructor(
         return user.isEmailVerified
     }
 
-    fun sendEmailVerification() : Boolean {
-        return sendEmailVerification()
+    fun sendEmailVerification() {
+        viewModelScope.launch {
+            createUserUseCase.sendEmailVerification()
+        }
     }
 
 }
