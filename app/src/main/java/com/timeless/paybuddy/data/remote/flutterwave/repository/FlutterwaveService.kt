@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.remote.firebase
+package com.timeless.paybuddy.data.remote.flutterwave.repository
 
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.util.Constants
@@ -9,16 +9,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface FirebaseService {
+interface FlutterwaveService {
 
-    @POST
-    suspend fun addUserToFirestore(
+    @POST("createWallet")
+    suspend fun createWallet(
         @Body user: User
     ) : Response<String>
 
+    @POST("checkBalance")
+    suspend fun loadUserBalance(
+        accountReference : String
+    ) : Response<Double>
+
     companion object {
 
-        fun create(): FirebaseService {
+        fun create(): FlutterwaveService {
             val logging = HttpLoggingInterceptor()
             logging.setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -26,7 +31,8 @@ interface FirebaseService {
                 .baseUrl(Constants.CLOUD_FUNCTIONS_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(FirebaseService::class.java)
+                .create(FlutterwaveService::class.java)
         }
     }
+
 }

@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.remote.reloadly
+package com.timeless.paybuddy.data.remote.reloadly.repository
 
 import com.timeless.paybuddy.domain.model.PurchaseHistory
 import com.timeless.paybuddy.domain.repository.ReloadlyRepository

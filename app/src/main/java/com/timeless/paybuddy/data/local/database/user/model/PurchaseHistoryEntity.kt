@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.local.user
+package com.timeless.paybuddy.data.local.database.user.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

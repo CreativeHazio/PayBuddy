@@ -1,7 +1,7 @@
 package com.timeless.paybuddy.data.mapper
 
-import com.timeless.paybuddy.data.remote.firebase.FirebaseUserDto
-import com.timeless.paybuddy.data.remote.firebase.FirebaseWalletDto
+import com.timeless.paybuddy.data.remote.firebase.model.FirebaseUserDto
+import com.timeless.paybuddy.data.remote.firebase.model.FirebaseWalletDto
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.model.Wallet
 

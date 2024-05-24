@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.remote.flutterwave
+package com.timeless.paybuddy.data.remote.flutterwave.repository
 
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.repository.FlutterwaveRepository

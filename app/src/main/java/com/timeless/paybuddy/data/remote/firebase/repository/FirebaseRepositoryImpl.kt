@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.remote.firebase
+package com.timeless.paybuddy.data.remote.firebase.repository
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.timeless.paybuddy.data.mapper.UserMapper
+import com.timeless.paybuddy.data.remote.firebase.model.FirebaseUserDto
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.repository.FirebaseRepository
 import com.timeless.paybuddy.util.Constants

@@ -1,6 +1,4 @@
-package com.timeless.paybuddy.data.remote.firebase
-
-import com.timeless.paybuddy.domain.model.Wallet
+package com.timeless.paybuddy.data.remote.firebase.model
 
 data class FirebaseUserDto (
     var userId: String? = "",

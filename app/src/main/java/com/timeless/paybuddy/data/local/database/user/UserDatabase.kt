@@ -1,14 +1,14 @@
-package com.timeless.paybuddy.data.local.database
+package com.timeless.paybuddy.data.local.database.user
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.timeless.paybuddy.data.local.typeConverter.PurchaseHistoryConverters
 import com.timeless.paybuddy.data.local.typeConverter.WalletConverters
-import com.timeless.paybuddy.data.local.user.PurchaseHistoryEntity
-import com.timeless.paybuddy.data.local.user.UserBalanceEntity
-import com.timeless.paybuddy.data.local.user.UserDAO
-import com.timeless.paybuddy.data.local.user.UserEntity
+import com.timeless.paybuddy.data.local.database.user.model.PurchaseHistoryEntity
+import com.timeless.paybuddy.data.local.database.user.model.UserBalanceEntity
+import com.timeless.paybuddy.data.local.database.user.repository.UserDAO
+import com.timeless.paybuddy.data.local.database.user.model.UserEntity
 
 //TODO: Change kapt to ksp for room dependency
 @Database(

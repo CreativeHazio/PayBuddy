@@ -2,8 +2,8 @@ package com.timeless.paybuddy.di
 
 import android.content.Context
 import androidx.room.Room
-import com.timeless.paybuddy.data.local.database.UserDatabase
-import com.timeless.paybuddy.data.local.user.UserDAO
+import com.timeless.paybuddy.data.local.database.user.UserDatabase
+import com.timeless.paybuddy.data.local.database.user.repository.UserDAO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

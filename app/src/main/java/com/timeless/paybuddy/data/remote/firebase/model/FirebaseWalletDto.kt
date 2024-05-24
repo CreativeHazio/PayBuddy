@@ -1,4 +1,4 @@
-package com.timeless.paybuddy.data.remote.firebase
+package com.timeless.paybuddy.data.remote.firebase.model
 
 data class FirebaseWalletDto (
     val accountName: String? = null,

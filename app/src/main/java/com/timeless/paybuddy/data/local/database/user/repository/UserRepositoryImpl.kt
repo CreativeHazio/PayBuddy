@@ -1,5 +1,7 @@
-package com.timeless.paybuddy.data.local.user
+package com.timeless.paybuddy.data.local.database.user.repository
 
+import com.timeless.paybuddy.data.local.database.user.model.UserBalanceEntity
+import com.timeless.paybuddy.data.local.database.user.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

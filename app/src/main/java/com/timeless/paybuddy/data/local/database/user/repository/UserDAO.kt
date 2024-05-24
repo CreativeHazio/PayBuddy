@@ -1,8 +1,11 @@
-package com.timeless.paybuddy.data.local.user
+package com.timeless.paybuddy.data.local.database.user.repository
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
+import com.timeless.paybuddy.data.local.database.user.model.PurchaseHistoryEntity
+import com.timeless.paybuddy.data.local.database.user.model.UserBalanceEntity
+import com.timeless.paybuddy.data.local.database.user.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
