@@ -35,7 +35,7 @@ class PurchaseHistoryFragment : Fragment() {
 
         val purchaseHistory = args.purchaseHistory
         binding.apply {
-            when (purchaseHistory.networkID) {
+            when (purchaseHistory.networkId) {
                 "MTN" -> {
                     Glide.with(requireContext()).load(R.drawable.ic_mtn_colored).into(
                         networkIDimage
@@ -57,10 +57,10 @@ class PurchaseHistoryFragment : Fragment() {
                     )
                 }
             }
-            networkProvider.text = purchaseHistory.networkID
+            networkProvider.text = purchaseHistory.networkId
             plan.text = purchaseHistory.plan
             amount.text = purchaseHistory.amount
-            phone.text = purchaseHistory.phoneNumber
+            phone.text = purchaseHistory.mobileNumber
             transactionId.text = purchaseHistory.transactionID
             status.text = purchaseHistory.status
             date.text = purchaseHistory.date

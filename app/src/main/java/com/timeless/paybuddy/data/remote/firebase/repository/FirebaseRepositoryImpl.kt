@@ -1,17 +1,23 @@
 package com.timeless.paybuddy.data.remote.firebase.repository
 
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.timeless.paybuddy.data.mapper.UserMapper
+import com.timeless.paybuddy.data.remote.firebase.PurchaseHistoryPagingSource
 import com.timeless.paybuddy.data.remote.firebase.model.FirebaseUserDto
+import com.timeless.paybuddy.domain.model.PurchaseHistory
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.repository.FirebaseRepository
 import com.timeless.paybuddy.util.Constants
 import com.timeless.paybuddy.util.Constants.Companion.FIRESTORE_PAGE_SIZE
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 import retrofit2.Response
 import javax.inject.Inject
@@ -62,22 +68,14 @@ class FirebaseRepositoryImpl  @Inject constructor(
         return null
     }
 
-    override fun getUserPurchaseHistoryFromFirestore(): Query? {
-
-        try {
-            val user = auth.currentUser
-            user?.run {
-                return firestore.collection(Constants.FIREBASE_PURCHASE_HISTORY_COLLECTION)
-                    // User history is stored with random id, but also user uid is used to know which user has it
-                    .whereEqualTo(Constants.FIREBASE_USERS_USERID, user.uid)
-                    .orderBy("date", Query.Direction.DESCENDING)
-                    .limit(FIRESTORE_PAGE_SIZE.toLong())
-            }
-        } catch (e : Exception) {
-            Log.w("Error getting user purchase history", e.message.toString())
-        }
-
-        return null
+    override fun getUserPurchaseHistoryPagingData(): Flow<PagingData<PurchaseHistory>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = FIRESTORE_PAGE_SIZE
+            )
+        ) {
+            PurchaseHistoryPagingSource(firestore, auth)
+        }.flow
     }
 
     override suspend fun createUserWithEmailAndPassword(

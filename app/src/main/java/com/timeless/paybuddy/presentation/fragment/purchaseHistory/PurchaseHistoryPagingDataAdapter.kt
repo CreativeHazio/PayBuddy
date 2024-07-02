@@ -37,7 +37,7 @@ class PurchaseHistoryPagingDataAdapter(
         val purchaseHistory = getItem(position) ?: return
 
         holder.itemView.apply {
-            when (purchaseHistory.networkID) {
+            when (purchaseHistory.networkId) {
                 "MTN" -> {
                     Glide.with(context).load(R.drawable.ic_mtn_colored).into(
                         this.findViewById(R.id.networkIDimagePurchased)
@@ -60,13 +60,13 @@ class PurchaseHistoryPagingDataAdapter(
                 }
             }
             this.findViewById<TextView>(R.id.purchaseNetworkID)
-                .text = "${context.getString(R.string.you_topped_up)} ${purchaseHistory.networkID}"
+                .text = "${context.getString(R.string.you_topped_up)} ${purchaseHistory.networkId}"
             this.findViewById<TextView>(R.id.purchaseAmount)
                 .text = "\u20a6${purchaseHistory.amount}"
             this.findViewById<TextView>(R.id.purchaseDate)
                 .text = purchaseHistory.date
             this.findViewById<TextView>(R.id.phoneNumberPurchasedFor)
-                .text = purchaseHistory.phoneNumber
+                .text = purchaseHistory.mobileNumber
 
             setOnClickListener {
                 onItemClickListener?.let {

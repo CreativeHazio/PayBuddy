@@ -1,8 +1,10 @@
 package com.timeless.paybuddy.domain.repository
 
+import androidx.paging.PagingData
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.Query
+import com.timeless.paybuddy.domain.model.PurchaseHistory
 import com.timeless.paybuddy.domain.model.User
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface FirebaseRepository {
@@ -17,7 +19,7 @@ interface FirebaseRepository {
 
     suspend fun getUserFromFirestore() : User?
 
-    fun getUserPurchaseHistoryFromFirestore(): Query?
+    fun getUserPurchaseHistoryPagingData() : Flow<PagingData<PurchaseHistory>>
 
 
 }
