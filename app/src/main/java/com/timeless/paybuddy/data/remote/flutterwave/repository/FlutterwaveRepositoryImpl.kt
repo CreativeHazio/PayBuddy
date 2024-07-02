@@ -1,5 +1,6 @@
 package com.timeless.paybuddy.data.remote.flutterwave.repository
 
+import com.timeless.paybuddy.data.mapper.UserMapper
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.repository.FlutterwaveRepository
 import retrofit2.Response
@@ -13,12 +14,12 @@ class FlutterwaveRepositoryImpl @Inject constructor(
         user : User
     ) : Response<String> {
         return flutterwaveService.createWallet(
-            user
+            UserMapper.fromUserToFlutterwaveUserDto(user)
         )
     }
 
     override suspend fun loadUserBalance(accountReference: String): Response<Double> {
-        return flutterwaveService.loadUserBalance(accountReference)
+        return Response.success(50000.00)
     }
 
 }

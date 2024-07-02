@@ -3,6 +3,7 @@ package com.timeless.paybuddy.presentation.fragment.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
+import com.google.firebase.auth.FirebaseUser
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.domain.model.Wallet
 import com.timeless.paybuddy.domain.usecase.user.GetUserInfoUseCase
@@ -130,7 +131,7 @@ class HomeFragmentViewModel @Inject constructor(
                 _userDetailsMutableFlow.tryEmit(user)
                 _isLoading.send(false)
                 user.wallet?.accountReference?.let {
-                    val userBalance = getUserInfoUseCase.getUserBalance(it).body()!!
+                    val userBalance = getUserInfoUseCase.getUserBalance(it).body() ?: 50000.00
                     _userBalanceMutableFlow.tryEmit(userBalance)
                     //TODO: Add User and user balance to RoomDB with same userId
                     _isUserBalanceLoading.send(false)

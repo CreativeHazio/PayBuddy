@@ -1,5 +1,6 @@
 package com.timeless.paybuddy.data.remote.flutterwave.repository
 
+import com.timeless.paybuddy.data.remote.flutterwave.model.FlutterwaveUserDto
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.util.Constants
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +14,7 @@ interface FlutterwaveService {
 
     @POST("createWallet")
     suspend fun createWallet(
-        @Body user: User
+        @Body flutterwaveUserDto: FlutterwaveUserDto
     ) : Response<String>
 
     @POST("checkBalance")

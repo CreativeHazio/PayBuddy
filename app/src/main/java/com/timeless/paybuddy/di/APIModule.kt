@@ -57,10 +57,9 @@ object APIModule {
     fun provideFirebaseRepositoryImpl(
         firebaseService: FirebaseService,
         firebaseAuth: FirebaseAuth,
-        firestore: FirebaseFirestore,
-        user: FirebaseUser?
+        firestore: FirebaseFirestore
     ) : FirebaseRepository {
-        return FirebaseRepositoryImpl(firebaseService, firebaseAuth, firestore, user)
+        return FirebaseRepositoryImpl(firebaseService, firebaseAuth, firestore)
     }
 
 }

@@ -39,5 +39,8 @@ class PurchaseHistoryPagingSource @Inject constructor(
         }
     }
 
+    override val keyReuseSupported: Boolean
+        get() = true
+
 
 }

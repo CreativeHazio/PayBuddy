@@ -39,8 +39,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseCurrentUser() : FirebaseUser? {
-        return Firebase.auth.currentUser
+    fun provideFirebaseCurrentUser(auth : FirebaseAuth) : FirebaseUser? {
+        return auth.currentUser
     }
 
 }

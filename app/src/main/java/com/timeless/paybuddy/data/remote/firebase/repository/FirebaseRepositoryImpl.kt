@@ -3,6 +3,7 @@ package com.timeless.paybuddy.data.remote.firebase.repository
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.timeless.paybuddy.data.mapper.UserMapper
@@ -18,18 +19,17 @@ import javax.inject.Inject
 class FirebaseRepositoryImpl  @Inject constructor(
     private val firebaseService: FirebaseService,
     private val auth : FirebaseAuth,
-    private val firestore: FirebaseFirestore,
-    private val currentUser : FirebaseUser?
+    private val firestore: FirebaseFirestore
 ) : FirebaseRepository {
 
-    //TODO: Chek for the best way to catch errors in android
+    //TODO: Check for the best way to catch errors in android
     override suspend fun addUserToFirestore(
         user: User
     ) : Response<String>? {
 
         try {
             return firebaseService.addUserToFirestore(
-                user
+                UserMapper.fromUserToFirebaseUserDto(user)
             )
         } catch (e : Exception) {
             Log.w("Error adding user to firestore", e.message.toString())
@@ -42,14 +42,18 @@ class FirebaseRepositoryImpl  @Inject constructor(
     override suspend fun getUserFromFirestore() : User? {
 
         try {
-            val response = firestore.collection(Constants.FIREBASE_USERS_COLLECTION)
-                .whereEqualTo(Constants.FIREBASE_USERS_USERID, currentUser?.uid)
-                .get()
-                .await()
+            val user = auth.currentUser
+            user?.run {
+                val response = firestore.collection(Constants.FIREBASE_USERS_COLLECTION)
+                    .whereEqualTo(Constants.FIREBASE_USERS_USERID, user.uid)
+                    .get()
+                    .await()
+                println(response.documents)
 
-            val firebaseUserDto = response.documents[0].toObject(FirebaseUserDto::class.java)
-            firebaseUserDto?.let {
-                return UserMapper.fromFirebaseUserDtoToUser(it)
+                val firebaseUserDto = response.documents[0].toObject(FirebaseUserDto::class.java)
+                firebaseUserDto?.let {
+                    return UserMapper.fromFirebaseUserDtoToUser(it)
+                }
             }
         } catch (e : Exception) {
             Log.w("Error getting user from firestore", e.message.toString())
@@ -61,11 +65,14 @@ class FirebaseRepositoryImpl  @Inject constructor(
     override fun getUserPurchaseHistoryFromFirestore(): Query? {
 
         try {
-            return firestore.collection(Constants.FIREBASE_PURCHASE_HISTORY_COLLECTION)
-                // User history is stored with random id, but also user uid is used to know which user has it
-                .whereEqualTo(Constants.FIREBASE_USERS_USERID, currentUser?.uid)
-                .orderBy("date", Query.Direction.DESCENDING)
-                .limit(FIRESTORE_PAGE_SIZE.toLong())
+            val user = auth.currentUser
+            user?.run {
+                return firestore.collection(Constants.FIREBASE_PURCHASE_HISTORY_COLLECTION)
+                    // User history is stored with random id, but also user uid is used to know which user has it
+                    .whereEqualTo(Constants.FIREBASE_USERS_USERID, user.uid)
+                    .orderBy("date", Query.Direction.DESCENDING)
+                    .limit(FIRESTORE_PAGE_SIZE.toLong())
+            }
         } catch (e : Exception) {
             Log.w("Error getting user purchase history", e.message.toString())
         }
@@ -96,7 +103,10 @@ class FirebaseRepositoryImpl  @Inject constructor(
     override suspend fun sendEmailVerification() {
 
         try {
-            currentUser!!.sendEmailVerification().await()
+            val user = auth.currentUser
+            user?.run {
+                user.sendEmailVerification().await()
+            }
             println("Verification sent")
         } catch (e : Exception) {
             Log.w("Error sending email verification", e.message.toString())

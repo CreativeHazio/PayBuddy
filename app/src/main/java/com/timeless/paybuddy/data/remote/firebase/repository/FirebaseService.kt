@@ -1,5 +1,6 @@
 package com.timeless.paybuddy.data.remote.firebase.repository
 
+import com.timeless.paybuddy.data.remote.firebase.model.FirebaseUserDto
 import com.timeless.paybuddy.domain.model.User
 import com.timeless.paybuddy.util.Constants
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +14,7 @@ interface FirebaseService {
 
     @POST
     suspend fun addUserToFirestore(
-        @Body user: User
+        @Body firebaseUserDto: FirebaseUserDto
     ) : Response<String>
 
     companion object {
